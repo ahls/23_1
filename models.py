@@ -1,6 +1,5 @@
 """Models for Blogly."""
 from flask_sqlalchemy import SQLAlchemy
-
 db = SQLAlchemy()
 
 def connect_db(app):
@@ -17,7 +16,7 @@ class User(db.Model):
     first_name = db.Column(db.String(30),nullable = False)
     last_name = db.Column(db.String(30),nullable = False)
     image_url = db.Column(db.String(100),nullable = True)
-    
+
     def __repr__(self):
         return f"id:{self.id} name({self.first_name} {self.last_name})"
 
@@ -31,3 +30,16 @@ def update_user(userID,form):
     db.session.add(editingUser)
     db.session.commit()
 
+class Post(db.Model):
+    """model for posts"""
+    __tablename__ = "posts"
+    
+    id = db.Column(db.Integer,
+                    primary_key = True,
+                    autoincrement = True)
+    title = db.Column(db.String(100),nullable = False)
+    content = db.Column(db.Text,nullable = False)
+    created_at = db.Column(db.DateTime, nullable = False)
+    author_id = db.Column(db.Integer,db.ForeignKey('users.id'), nullable = True)
+
+    author = db.relationship('User',backref=db.backref('posts',cascade="all, delete-orphan"))

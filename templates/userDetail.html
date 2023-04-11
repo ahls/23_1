@@ -2,11 +2,21 @@
 {% block bodyBlock %}
     <span>
         <div>
-            <img src="{{user.image_url}}" alt="">
+            <img src="{{user.image_url}}" alt="" style="float:left" width="200px">
         </div>
         <h2>{{user.first_name}} {{user.last_name}}</h2>
-        <form action="/users/{{user.id}}/edit"> <button>Edit</button></form>
-        <form action="/users/{{user.id}}/delete"> <button>Delete</button></form>
+        <a href="/users/{{user.id}}/edit">Edit</a>
+        <a href="/users/{{user.id}}/posts/new">post</a>
+        <a href="/users/{{user.id}}/delete">Delete</a>
     </span>
+    {% if posts != None : %}
+    <ul>
+        {% for post in posts: %}
+            <li>
+                <a href="/posts/{{post.id}}">{{post.title}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 {% endblock %}

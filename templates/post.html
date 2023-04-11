@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block bodyBlock %}
+<h1>{{post.title}}</h1>
+<p>
+    {{post.content}}
+</p>
+<div>
+    by {{user.first_name}} {{user.last_name}} on {{post.created_at.date()}}   
+    {% if post.created_at.time().hour <= 12: %}
+        {{post.created_at.time().hour}}:{{post.created_at.time().minute}} am
+    {% else: %}
+        {{post.created_at.time().hour}}:{{post.created_at.time().minute}} pm
+    {% endif %}
+</div>
+<a href="/users/{{user.id}}">Go Back</a>
+<a href="/posts/{{post.id}}/edit">Edit</a>
+<form action="/posts/{{post.id}}/delete", method="post"><button>Delete</button></form>
+
+
+{% endblock %}
