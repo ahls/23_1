@@ -4,12 +4,17 @@
         <div>
             <img src="{{user.image_url}}" alt="" style="float:left" width="200px">
         </div>
-        <h2>{{user.first_name}} {{user.last_name}}</h2>
-        <a href="/users/{{user.id}}/edit">Edit</a>
-        <a href="/users/{{user.id}}/posts/new">post</a>
-        <a href="/users/{{user.id}}/delete">Delete</a>
+        
+        <h2>User detail: {{user.first_name}} {{user.last_name}}</h2>
+
+        <form action="">
+            <button formaction="/users/{{user.id}}/edit" formmethod="get">Edit</button>
+            <button class="blueButton" formaction="/users/{{user.id}}/posts/new" formmethod="get">post</button>
+            <button class="redButton" formaction="/users/{{user.id}}/delete" formmethod="get">Delete</button>
+        </form>
     </span>
     {% if posts != None : %}
+    <h3>posts</h3>
     <ul>
         {% for post in posts: %}
             <li>

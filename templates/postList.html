@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block bodyBlock %}
+    <h1>Posts</h1>
+    <ul>
+        {% for post in posts: %}
+        <li>
+            <a   href="/post/{{post.id}}">{{post.title}} - by {{post.first_name}} {{post.last_name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

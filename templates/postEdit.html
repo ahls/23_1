@@ -8,6 +8,11 @@
         
         <label for="postContent">Body</label><br>
         <textarea name="postContent" id="" cols="30" rows="10">{{post.content}}</textarea><br>
+        
+
+        {% for tag in tags: %}
+        <input type="checkbox" name="tags" value="{{tag.id}}">{{tag.name}}<br>
+        {% endfor %}
         <a href="/posts/{{post.id}}">cancel</a>
         <button>Update</button>
     </form>

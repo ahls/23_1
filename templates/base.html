@@ -5,10 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
-    {% for category, message in get_flashed_message(with_categories = true): %}
-        <div class="">{{message}}</div>
+    <div class="navbar">
+        <a href="/users">users</a>
+        <a href="/tags">tags</a>
+        <a href="/posts">posts</a>
+     </div>
+    {% for category, message in get_flashed_messages(with_categories = true): %}
+        <div class="message {{category}}">{{message}}</div>
     {% endfor %}
     {% block bodyBlock%}
     {% endblock %}

@@ -1,0 +1,72 @@
+.navbar {
+    background-color: #f8f9fa;
+    overflow: hidden;
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+
+  .navbar a:hover {
+    background-color: #ddd;
+  }
+  .message
+  {
+    align-items: center;
+    text-align: center;
+    color:aliceblue;
+  }
+  .error
+  {
+    background-color: darkred;
+  }
+  .success
+  {
+    background-color: green;
+  }
+  .tag
+  {
+    background-color: rgb(38, 23, 139); 
+    color:bisque;
+    border-radius: 20%;
+    margin: 2px;
+    padding: 3px;
+    transition: 200ms;
+    text-decoration: none;
+  }
+  .tag:hover
+  {
+    background-color: slateblue; 
+    text-decoration: none;
+  }
+  .tag:visited
+  {
+    color:bisque;
+    text-decoration: none;
+  }
+  .postBody
+  {
+    outline-style: solid;
+    outline-width: 1px;
+    width: 600px;
+    padding: 20px
+  }
+  .redButton
+  {
+    background-color: red;
+    color:white;
+  }
+  .blueButton
+  {
+    background-color: cornflowerblue;
+    color:white;
+  }
+  button
+  {
+    border-radius: 10%;
+  }

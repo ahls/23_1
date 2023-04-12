@@ -43,3 +43,19 @@ class Post(db.Model):
     author_id = db.Column(db.Integer,db.ForeignKey('users.id'), nullable = True)
 
     author = db.relationship('User',backref=db.backref('posts',cascade="all, delete-orphan"))
+    tags = db.relationship('Tag', secondary='posttags', backref='posts')
+
+class Tag(db.Model):
+    """model for tags"""
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer,
+                    primary_key = True,
+                    autoincrement = True)
+    name = db.Column(db.String(100),unique = True,nullable = False)
+
+class PostTag(db.Model):
+    __tablename__ = "posttags"
+
+    post_id = db.Column(db.Integer,db.ForeignKey('posts.id', ondelete="CASCADE"), primary_key=True,nullable=False)
+    tag_id = db.Column(db.Integer,db.ForeignKey('tags.id', ondelete="CASCADE"), primary_key=True,nullable=False)
